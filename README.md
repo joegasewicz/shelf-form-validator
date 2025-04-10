@@ -31,14 +31,14 @@ dart pub add shelf_form_validator
 
 - Simple API for form validation
 - Plug-and-play validator classes (e.g. `EmptyString`, `StringLength`, `ValidEmail`, etc.)
-- Works great with `dart:mirrors` in CLI/server-side Dart
+- Provides reflection helper functions for schema validation
 - Can validate any schema object with a `final` field structure
 
 ---
 
-## ✨ Quick Start Example
+## ✨ Quick Start
 
-### Validator Example
+### Validator
 
 ```dart
 final validator = Validator(schema: data)
@@ -48,7 +48,7 @@ final validator = Validator(schema: data)
 validator.validate();
 ```
 
-### Schema Example
+### Create a Dart Schema
 
 ```dart
 class Login {
@@ -59,7 +59,7 @@ class Login {
 }
 ```
 
-### Combined Schema & Validator Example
+### Combined Your Schema & Validator
 
 ```dart
 class Login {
@@ -87,7 +87,7 @@ class Login {
 
 ---
 
-Here's a minimal example using just two fields:
+Minimal example using just two fields:
 
 ```dart
 class Login {
@@ -162,7 +162,7 @@ class Register {
 
 ---
 
-## 🔄 Example: Inside a Shelf handler
+## 🔄 Using `ValidationException` Inside a Shelf handler
 
 ```dart
 @override
@@ -182,7 +182,6 @@ Future<Response> post(Request request) async {
 
 ---
 
-## 🏃 Validators
 ## 🏃 Validators
 
 | Validator       | Description                                      | Example Usage                                                                 |
