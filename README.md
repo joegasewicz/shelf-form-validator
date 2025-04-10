@@ -183,13 +183,14 @@ Future<Response> post(Request request) async {
 ---
 
 ## 🏃 Validators
+## 🏃 Validators
 
-| Validator      | Description                          |
-|----------------|--------------------------------------|
-| `EmptyString`  | Fails if the string is empty or blank |
-| `StringLength` | Fails if the string is too short      |
-| `ValidEmail`   | Checks for valid email pattern        |
-| `FieldsMatch`  | Ensures two fields have equal values  |
+| Validator       | Description                                      | Example Usage                                                                 |
+|----------------|--------------------------------------------------|--------------------------------------------------------------------------------|
+| `EmptyString`   | Fails if the string is empty or only whitespace | `addValidator('name', [EmptyString()])`                                       |
+| `StringLength`  | Ensures string is at least a certain length     | `addValidator('password', [StringLength(stringLength: 8)])`                   |
+| `ValidEmail`    | Validates a basic email format                  | `addValidator('email', [ValidEmail()])`                                       |
+| `FieldsMatch`   | Verifies one field matches another              | `addValidator('confirmPassword', [FieldsMatch(matchField: 'password')])`      |
 
 ---
 

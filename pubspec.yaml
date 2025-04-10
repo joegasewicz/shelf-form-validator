@@ -1,7 +1,7 @@
 name: shelf_form_validator
 description: A lightweight, extensible validation framework for Dart form data. Ideal for backend or CLI apps.
 version: 0.1.0
-repository: https://github.com/your_username/shelf_form_validator
+repository: https://github.com/joegasewicz/shelf-form-validator
 
 environment:
   sdk: ^3.7.2

@@ -2,7 +2,16 @@ import 'package:shelf_form_validator/src/reflect.dart';
 
 import 'validator.dart';
 
+/// Base class for all validation rules.
+///
+/// All validators must extend this class and implement the [validate] method.
 abstract class ValidationBase {
+  /// Validates a single field value.
+  ///
+  /// - [value]: the actual value to validate.
+  /// - [attrName]: the name of the field being validated.
+  /// - [validationErrors]: the shared error map to add validation errors to.
+  /// - [schema]: the entire object being validated, useful for cross-field comparisons.
   void validate(
     String value,
     String attrName,
@@ -11,6 +20,12 @@ abstract class ValidationBase {
   });
 }
 
+/// Validator that checks if a string is not empty or blank.
+///
+/// Example:
+/// ```dart
+/// validator.addValidator('name', [EmptyString()]);
+/// ```
 class EmptyString extends ValidationBase {
   @override
   void validate(
@@ -28,6 +43,12 @@ class EmptyString extends ValidationBase {
   }
 }
 
+/// Validator that checks if a string meets a minimum length.
+///
+/// Example:
+/// ```dart
+/// validator.addValidator('username', [StringLength(stringLength: 4)]);
+/// ```
 class StringLength extends ValidationBase {
   int stringLength;
 
@@ -51,6 +72,12 @@ class StringLength extends ValidationBase {
   }
 }
 
+/// Validator that checks if a string is a valid email address.
+///
+/// Example:
+/// ```dart
+/// validator.addValidator('email', [ValidEmail()]);
+/// ```
 class ValidEmail extends ValidationBase {
   @override
   void validate(
@@ -69,6 +96,14 @@ class ValidEmail extends ValidationBase {
   }
 }
 
+/// Validator that checks if two fields in the schema match.
+///
+/// Useful for fields like `password` and `confirmPassword`.
+///
+/// Example:
+/// ```dart
+/// validator.addValidator('confirmPassword', [FieldsMatch(matchField: 'password')]);
+/// ```
 class FieldsMatch extends ValidationBase {
   String matchField;
   String? errorMessage;
